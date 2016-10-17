@@ -7,6 +7,7 @@ public class Point {
     protected boolean canMoveDown, canMoveLeft, canMoveRight;
     protected int length;
 
+
     //массивы для записи координат фигуры
     protected int pointX[] = new int[5];
     protected int pointY[] = new int[5];
@@ -32,19 +33,19 @@ public class Point {
         direct = d;
     }
 
-    public Orientation getOrientation(){
+    public Orientation getOrientation() {
         return orientation;
     }
 
-    public void setOrientation(Orientation orient){
+    public void setOrientation(Orientation orient) {
         orientation = orient;
     }
 
-    public int getPointX(int i){
+    public int getPointX(int i) {
         return pointX[i];
     }
 
-    public int getPointY(int i){
+    public int getPointY(int i) {
         return pointY[i];
     }
 
@@ -77,30 +78,40 @@ public class Point {
     }
 
     //разворачиваем фигуру
-    public  void switchOrientation() {}
+    public void switchOrientation() {
+    }
 
     //проверяем можно ли двигаться дальше
-    public void canIMove(){
+    public void canIMove() {
         for (int d = 0; d < length; d++) {
-            if (pointY[d]+1 <= 19)
+            if (pointY[d] + 1 <= 19)
                 canMoveDown = true;
             else {
                 canMoveDown = false;
                 Main.canCreate = true;
-                Main.index++;
+
+                for (int i = 0; i < length; i++ ){          //когда фигура не может больше снижаться
+                    GameField.gameFieldX.add(pointX[i]);    //она передает свои координаты в GameField
+                    GameField.gameFieldY.add(pointY[i]);
+                }
+                /*
+                *   где-то тут делается проверка на столкновение с GameField
+                *   и передаются ее координаты
+                *
+                */
                 break;
             }
 
-            if (pointX[d]-1 >= 0 )
+            if (pointX[d] - 1 >= 0)
                 canMoveLeft = true;
-            else{
+            else {
                 canMoveLeft = false;
                 break;
             }
 
-            if (pointX[d]+1 <= 9)
+            if (pointX[d] + 1 <= 9)
                 canMoveRight = true;
-            else{
+            else {
                 canMoveRight = false;
                 break;
             }

@@ -6,8 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-
 
 
 public class Main extends JPanel implements ActionListener{
@@ -17,11 +15,9 @@ public class Main extends JPanel implements ActionListener{
     private static final int HEIGHT = 20;
 
     public static boolean canCreate = true;   //разрешает создание нового объекта
-    public static int index = 0;
 
-
-    private ArrayList<Point> figures = new ArrayList<Point>();  //массив фигур
     private Point p = new Point();      //вспомогательный объект
+    private GameField game = new GameField();
 
     private Timer t = new Timer(500, this);
 
@@ -49,13 +45,15 @@ public class Main extends JPanel implements ActionListener{
         }
 
         //рисуем фигуру
-        for (int i = 0; i <= index; i++) {  //рисуем КАЖДУЮ фигуру из массива фигур
-            Point ris = new Point();
-            ris = figures.get(i);
-            for (int d = 0; d < p.getLength(); d++) {
-                g.setColor(Color.GREEN);
-                g.fillRect(ris.getPointX(d) * SCALE + 1, ris.getPointY(d) * SCALE + 1, SCALE - 1, SCALE - 1);
-            }
+        for (int d = 0; d < p.getLength(); d++) {
+            g.setColor(Color.GREEN);
+            g.fillRect(p.getPointX(d) * SCALE + 1, p.getPointY(d) * SCALE + 1, SCALE - 1, SCALE - 1);
+        }
+
+
+        for (int j = 0; j < game.gameFieldX.size(); j++){
+            g.setColor(Color.GREEN);
+            g.fillRect(game.gameFieldX.get(j) * SCALE + 1, game.gameFieldY.get(j) * SCALE + 1, SCALE - 1, SCALE - 1);
         }
     }
 
@@ -73,8 +71,7 @@ public class Main extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         p.move();
         if (canCreate) {
-            createFigure();
-            p = figures.get(index);
+            p = createFigure();
             canCreate = false;
         }
         repaint();
@@ -97,7 +94,7 @@ public class Main extends JPanel implements ActionListener{
     }
 
     //добавление нововй фигуры в массив фигур
-    private void createFigure(){
-        figures.add(new ZFigure());
+    private Point createFigure(){
+        return new ZFigure();
     }
 }
