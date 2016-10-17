@@ -23,8 +23,6 @@ public class Main extends JPanel implements ActionListener{
     private ArrayList<Point> figures = new ArrayList<Point>();  //массив фигур
     private Point p = new Point();      //вспомогательный объект
 
-
-    //private ZFigure zFig = new ZFigure();
     private Timer t = new Timer(500, this);
 
     public Main() {
@@ -51,7 +49,7 @@ public class Main extends JPanel implements ActionListener{
         }
 
         //рисуем фигуру
-        for (int i = 0; i <= index; i++) {
+        for (int i = 0; i <= index; i++) {  //рисуем КАЖДУЮ фигуру из массива фигур
             Point ris = new Point();
             ris = figures.get(i);
             for (int d = 0; d < p.getLength(); d++) {
@@ -90,10 +88,10 @@ public class Main extends JPanel implements ActionListener{
             if (key == KeyEvent.VK_RIGHT) p.setDirection(Direction.RIGHT);
             if (key == KeyEvent.VK_LEFT) p.setDirection(Direction.LEFT);
             if (key == KeyEvent.VK_SPACE) {
-                if (p.getOrientation2() == Orientation.UPRIGHT)
-                    p.setOrientation2(Orientation.HORIZONTALY);
+                if (p.getOrientation() == Orientation.UPRIGHT)
+                    p.setOrientation(Orientation.HORIZONTALY);
                 else
-                    p.setOrientation2(Orientation.UPRIGHT);
+                    p.setOrientation(Orientation.UPRIGHT);
             }
         }
     }

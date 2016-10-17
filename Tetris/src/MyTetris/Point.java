@@ -3,8 +3,7 @@ package MyTetris;
 public class Point {
 
     protected Direction direct = Direction.DOWN;   //Направление движения
-    protected Orientation orientation1 = Orientation.UPRIGHT;  //ориентация фигуры
-    protected Orientation orientation2 = Orientation.UPRIGHT;
+    protected Orientation orientation = Orientation.UPRIGHT; //ориентация фигуры
     protected boolean canMoveDown, canMoveLeft, canMoveRight;
     protected int length;
 
@@ -33,12 +32,12 @@ public class Point {
         direct = d;
     }
 
-    public Orientation getOrientation2(){
-        return orientation2;
+    public Orientation getOrientation(){
+        return orientation;
     }
 
-    public void setOrientation2(Orientation orient){
-        orientation2 = orient;
+    public void setOrientation(Orientation orient){
+        orientation = orient;
     }
 
     public int getPointX(int i){
