@@ -10,13 +10,12 @@ import java.awt.event.KeyEvent;
 
 public class Main extends JPanel implements ActionListener{
 
-    public static final int SCALE = 25;
-    public static final int WIDTH = 10;
-    public static final int HEIGHT = 20;
+    private static final int SCALE = 25;
+    private static final int WIDTH = 10;
+    private static final int HEIGHT = 20;
 
-    MyTetris.Point p = new MyTetris.Point();
-    ZFigure z = new ZFigure();
-    Timer t = new Timer(500, this);
+    private ZFigure z = new ZFigure();
+    private Timer t = new Timer(500, this);
 
     public Main() {
         t.start();
