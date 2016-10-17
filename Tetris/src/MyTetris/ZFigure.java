@@ -10,7 +10,7 @@ public class ZFigure extends Point {
                 pointY[d] = d;
             }
             else {
-                pointX[d] = 5;
+                pointX[d] = 3;
                 pointY[d] = d-1;
             }
         }

@@ -16,7 +16,7 @@ public class Main extends JPanel implements ActionListener{
 
     MyTetris.Point p = new MyTetris.Point();
     ZFigure z = new ZFigure();
-    Timer t = new Timer(500, this);
+    Timer t = new Timer(800, this);
 
     public Main() {
         t.start();
@@ -25,24 +25,27 @@ public class Main extends JPanel implements ActionListener{
     }
 
     public void paint(Graphics g){
+
+        //рисуем фон
         g.setColor(Color.cyan);
         g.fillRect(0, 0, WIDTH*SCALE, HEIGHT*SCALE);
         g.setColor(Color.LIGHT_GRAY);
 
+        //рисуем вертикальные линии
         for (int x = 0; x <= WIDTH*SCALE; x+=SCALE){
             g.drawLine(x, 0, x, HEIGHT*SCALE);
         }
 
+        //рисуем горизонтальные линии
         for (int y = 0; y <= HEIGHT*SCALE; y+=SCALE){
             g.drawLine(0, y, WIDTH*SCALE, y);
         }
 
+        //рисуем фигуру
         for (int d = 0; d < z.length; d++){
             g.setColor(Color.GREEN);
             g.fillRect(z.pointX[d]*SCALE+1, z.pointY[d]*SCALE+1, SCALE-1, SCALE-1);
         }
-
-
     }
 
     public static void main(String[] args) {
@@ -67,6 +70,8 @@ public class Main extends JPanel implements ActionListener{
 
             if (key == KeyEvent.VK_RIGHT) z.direct = Direction.RIGHT;
             if (key == KeyEvent.VK_LEFT) z.direct = Direction.LEFT;
+            if (key == KeyEvent.VK_Q) z.orientation2 = Orientation.HORIZONTALY;
+            if (key == KeyEvent.VK_W) z.orientation2 = Orientation.UPRIGHT;
         }
     }
 }
