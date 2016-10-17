@@ -2,11 +2,13 @@ package MyTetris;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+
+
 
 public class Main extends JPanel implements ActionListener{
 
@@ -14,7 +16,15 @@ public class Main extends JPanel implements ActionListener{
     private static final int WIDTH = 10;
     private static final int HEIGHT = 20;
 
-    private ZFigure z = new ZFigure();
+    public static boolean canCreate = true;   //разрешает создание нового объекта
+    public static int index = 0;
+
+
+    private ArrayList<Point> figures = new ArrayList<Point>();  //массив фигур
+    private Point p = new Point();      //вспомогательный объект
+
+
+    //private ZFigure zFig = new ZFigure();
     private Timer t = new Timer(500, this);
 
     public Main() {
@@ -41,9 +51,13 @@ public class Main extends JPanel implements ActionListener{
         }
 
         //рисуем фигуру
-        for (int d = 0; d < z.getLength(); d++){
-            g.setColor(Color.GREEN);
-            g.fillRect(z.getPointX(d)*SCALE+1, z.getPointY(d)*SCALE+1, SCALE-1, SCALE-1);
+        for (int i = 0; i <= index; i++) {
+            Point ris = new Point();
+            ris = figures.get(i);
+            for (int d = 0; d < p.getLength(); d++) {
+                g.setColor(Color.GREEN);
+                g.fillRect(ris.getPointX(d) * SCALE + 1, ris.getPointY(d) * SCALE + 1, SCALE - 1, SCALE - 1);
+            }
         }
     }
 
@@ -59,22 +73,33 @@ public class Main extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        z.move();
+        p.move();
+        if (canCreate) {
+            createFigure();
+            p = figures.get(index);
+            canCreate = false;
+        }
         repaint();
     }
 
+    //действия на нажатия клавиш
     private class Kyboard extends KeyAdapter {
         public void keyPressed(KeyEvent event){
             int key = event.getKeyCode();
 
-            if (key == KeyEvent.VK_RIGHT) z.setDirection(Direction.RIGHT);
-            if (key == KeyEvent.VK_LEFT) z.setDirection(Direction.LEFT);
+            if (key == KeyEvent.VK_RIGHT) p.setDirection(Direction.RIGHT);
+            if (key == KeyEvent.VK_LEFT) p.setDirection(Direction.LEFT);
             if (key == KeyEvent.VK_SPACE) {
-                if (z.getOrientation2() == Orientation.UPRIGHT)
-                    z.setOrientation2(Orientation.HORIZONTALY);
+                if (p.getOrientation2() == Orientation.UPRIGHT)
+                    p.setOrientation2(Orientation.HORIZONTALY);
                 else
-                    z.setOrientation2(Orientation.UPRIGHT);
+                    p.setOrientation2(Orientation.UPRIGHT);
             }
         }
+    }
+
+    //добавление нововй фигуры в массив фигур
+    private void createFigure(){
+        figures.add(new ZFigure());
     }
 }

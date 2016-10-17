@@ -87,6 +87,8 @@ public class Point {
                 canMoveDown = true;
             else {
                 canMoveDown = false;
+                Main.canCreate = true;
+                Main.index++;
                 break;
             }
 
