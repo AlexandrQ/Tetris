@@ -117,4 +117,18 @@ public class Point {
             }
         }
     }
+
+//    public boolean figureCrashGameField(){
+//        boolean b;
+//        for (int i = 0; i < length; i++){
+//            for (int k = 0; k < GameField.gameFieldX.size(); k++){
+//                if ((pointX[i] == GameField.gameFieldX.get(k)) & (pointY[i] == GameField.gameFieldY.get(k))){
+//                    b = true;
+//                }
+//
+//                else b = false;
+//            }
+//        }
+//        return b;
+//    }
 }
