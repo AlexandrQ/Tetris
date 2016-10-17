@@ -70,8 +70,12 @@ public class Main extends JPanel implements ActionListener{
 
             if (key == KeyEvent.VK_RIGHT) z.direct = Direction.RIGHT;
             if (key == KeyEvent.VK_LEFT) z.direct = Direction.LEFT;
-            if (key == KeyEvent.VK_Q) z.orientation2 = Orientation.HORIZONTALY;
-            if (key == KeyEvent.VK_W) z.orientation2 = Orientation.UPRIGHT;
+            if (key == KeyEvent.VK_SPACE) {
+                if (z.orientation2 == Orientation.UPRIGHT)
+                    z.orientation2 = Orientation.HORIZONTALY;
+                else
+                    z.orientation2 = Orientation.UPRIGHT;
+            }
         }
     }
 }
