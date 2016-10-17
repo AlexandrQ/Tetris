@@ -19,6 +19,7 @@ public class ZFigure extends Point {
     }
 
     //разворот z-образной фигуры
+    @Override
     public  void switchOrientation() {
         if (orientation2 != orientation1){
             switch (orientation2){
@@ -53,4 +54,5 @@ public class ZFigure extends Point {
             }
         }
     }
+
 }
