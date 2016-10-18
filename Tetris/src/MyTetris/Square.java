@@ -1,8 +1,6 @@
 package MyTetris;
 
-/**
- * Created by Nathaniel on 18.10.2016.
- */
+
 public class Square extends Point {
     Square() {
         length = 4;

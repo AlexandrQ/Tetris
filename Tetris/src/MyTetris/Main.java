@@ -21,7 +21,7 @@ public class Main extends JPanel implements ActionListener{
     private GameField game = new GameField();
 
     private Random rand = new Random(System.currentTimeMillis());
-    private Timer t = new Timer(100, this);
+    private Timer t = new Timer(500, this);
 
     public Main() {
         t.start();
@@ -98,19 +98,19 @@ public class Main extends JPanel implements ActionListener{
 
     //добавление нововй фигуры в массив фигур
     private Point createFigure(){
-        Point obj;
-        int choice = rand.nextInt(3)+1;
-        switch (choice){
-            case 1:
-                obj = new SFigure();
-                break;
-            case 2:
-                obj = new Square();
-                break;
-            default:
-                obj = new ZFigure();
-                break;
-        }
+        Point obj = new Line();
+//        int choice = rand.nextInt(3)+1;
+//        switch (choice){
+//            case 1:
+//                obj = new SFigure();
+//                break;
+//            case 2:
+//                obj = new Square();
+//                break;
+//            default:
+//                obj = new ZFigure();
+//                break;
+//        }
 
         //проверяем может ли созданный объект двигаться вниз
         obj.canIMove();

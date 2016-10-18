@@ -19,13 +19,7 @@ public class Point {
     protected int pointY[] = new int[5];
 
     //Коструктор
-    public Point() {
-//        length = 1;
-//        pointX[0] = 4;
-//        pointY[0] = 0;
-//        pointX[1] = 5;
-//        pointY[1] = 1;
-    }
+    public Point() {}
 
     public int getLength() {
         return length;
