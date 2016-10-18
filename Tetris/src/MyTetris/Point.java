@@ -84,21 +84,17 @@ public class Point {
     //проверяем можно ли двигаться дальше
     public void canIMove() {
         for (int d = 0; d < length; d++) {
-            if (pointY[d] + 1 <= 19)
+            if (pointY[d] + 1 <= 19 & figureCrashGameField() )
                 canMoveDown = true;
             else {
-                canMoveDown = false;
-                Main.canCreate = true;
+                canMoveDown = false;                        //когда фигура не может больше снижаться
 
-                for (int i = 0; i < length; i++ ){          //когда фигура не может больше снижаться
-                    GameField.gameFieldX.add(pointX[i]);    //она передает свои координаты в GameField
+                for (int i = 0; i < length; i++ ){
+                    GameField.gameFieldX.add(pointX[i]);    //старая фигура передает свои координаты в GameField
                     GameField.gameFieldY.add(pointY[i]);
                 }
-                /*
-                *   где-то тут делается проверка на столкновение с GameField
-                *   и передаются ее координаты
-                *
-                */
+
+                Main.canCreate = true;                      //программа может создать новую фигуру
                 break;
             }
 
@@ -118,17 +114,15 @@ public class Point {
         }
     }
 
-//    public boolean figureCrashGameField(){
-//        boolean b;
-//        for (int i = 0; i < length; i++){
-//            for (int k = 0; k < GameField.gameFieldX.size(); k++){
-//                if ((pointX[i] == GameField.gameFieldX.get(k)) & (pointY[i] == GameField.gameFieldY.get(k))){
-//                    b = true;
-//                }
-//
-//                else b = false;
-//            }
-//        }
-//        return b;
-//    }
+    public boolean figureCrashGameField(){
+        for (int i = 0; i < length; i++){
+            for (int k = 0; k < GameField.gameFieldX.size(); k++){
+                //проверка на столкновение с GameField при движении вниз
+                if ((pointX[i] == GameField.gameFieldX.get(k)) & (pointY[i]+1 == GameField.gameFieldY.get(k))){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

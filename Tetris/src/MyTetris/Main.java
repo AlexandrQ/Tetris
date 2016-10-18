@@ -19,7 +19,7 @@ public class Main extends JPanel implements ActionListener{
     private Point p = new Point();      //вспомогательный объект
     private GameField game = new GameField();
 
-    private Timer t = new Timer(500, this);
+    private Timer t = new Timer(400, this);
 
     public Main() {
         t.start();
