@@ -19,7 +19,7 @@ public class Main extends JPanel implements ActionListener{
     private Point p = new Point();      //вспомогательный объект
     private GameField game = new GameField();
 
-    private Timer t = new Timer(300, this);
+    private Timer t = new Timer(200, this);
 
     public Main() {
         t.start();
@@ -71,6 +71,7 @@ public class Main extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         p.move();
         if (canCreate) {
+            GameField.findFullLine();
             p = createFigure();
             canCreate = false;
         }
@@ -95,6 +96,13 @@ public class Main extends JPanel implements ActionListener{
 
     //добавление нововй фигуры в массив фигур
     private Point createFigure(){
-        return new ZFigure();
+        ZFigure obj = new ZFigure();
+        //проверяем может ли созданный объект двигаться вниз
+        obj.canIMove();
+        //если не может, то конец игры
+        if (obj.getCanMoveDown() == false){
+            System.exit(0);
+        }
+        return obj;
     }
 }

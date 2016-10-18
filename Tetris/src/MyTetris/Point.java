@@ -54,6 +54,8 @@ public class Point {
         return pointY[i];
     }
 
+    public  boolean getCanMoveDown(){return canMoveDown; };
+
     //двигаем фигуру
     public void move() {
         canIMove();
@@ -75,7 +77,6 @@ public class Point {
                 for (int d = length; d >= 0; d--) {
                     if (canMoveDown == true) pointY[d]++;
                 }
-                //direct = Direction.DOWN;
                 break;
         }
     }
