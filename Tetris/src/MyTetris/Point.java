@@ -20,11 +20,11 @@ public class Point {
 
     //Коструктор
     public Point() {
-        length = 1;
-        pointX[0] = 4;
-        pointY[0] = 0;
-        pointX[1] = 5;
-        pointY[1] = 1;
+//        length = 1;
+//        pointX[0] = 4;
+//        pointY[0] = 0;
+//        pointX[1] = 5;
+//        pointY[1] = 1;
     }
 
     public int getLength() {
