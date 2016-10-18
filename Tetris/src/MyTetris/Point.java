@@ -4,12 +4,13 @@ public class Point {
 
     protected Direction direct = Direction.DOWN;   //Направление движения
     protected Orientation orientation = Orientation.UPRIGHT; //ориентация фигуры
+    protected Orientation orientation2 = Orientation.UPRIGHT;
     protected boolean canMoveDown = true,
-            canMoveLeft = true,
-            canMoveRight = true,
-            crashDownField = true,
-            crashRightField = true,
-            crashLeftField = true;
+            canMoveLeft,
+            canMoveRight,
+            crashDownField,
+            crashRightField,
+            crashLeftField;
     protected int length;
 
 
@@ -28,10 +29,6 @@ public class Point {
 
     public int getLength() {
         return length;
-    }
-
-    public Direction getDirection() {
-        return direct;
     }
 
     public void setDirection(Direction d) {
@@ -58,8 +55,13 @@ public class Point {
 
     //двигаем фигуру
     public void move() {
+        canMoveDown = canMoveLeft = canMoveRight = true;
         canIMove();
-        switchOrientation();
+        if (orientation2 != orientation){
+            switchOrientation();
+            orientation2 = orientation;
+        }
+
         switch (direct) {
             case RIGHT:
                 for (int d = length; d >= 0; d--) {
@@ -87,6 +89,7 @@ public class Point {
 
     //проверяем можно ли двигаться дальше
     public void canIMove() {
+        crashDownField = crashRightField = crashLeftField = true;
         figureCrashGameField();
         for (int d = 0; d < length; d++) {
             if (pointY[d] + 1 > 19 || !crashDownField ) {

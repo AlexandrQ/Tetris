@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Random;
 
 
 public class Main extends JPanel implements ActionListener{
@@ -19,7 +20,8 @@ public class Main extends JPanel implements ActionListener{
     private Point p = new Point();      //вспомогательный объект
     private GameField game = new GameField();
 
-    private Timer t = new Timer(200, this);
+    private Random rand = new Random(System.currentTimeMillis());
+    private Timer t = new Timer(100, this);
 
     public Main() {
         t.start();
@@ -96,7 +98,17 @@ public class Main extends JPanel implements ActionListener{
 
     //добавление нововй фигуры в массив фигур
     private Point createFigure(){
-        ZFigure obj = new ZFigure();
+        Point obj;
+        int choice = rand.nextInt(2)+1;
+        switch (choice){
+            case 1:
+                obj = new SFigure();
+                break;
+            default:
+                obj = new ZFigure();
+                break;
+        }
+
         //проверяем может ли созданный объект двигаться вниз
         obj.canIMove();
         //если не может, то конец игры
