@@ -9,10 +9,6 @@ public class GameField {
     public static ArrayList<Integer> gameFieldX = new ArrayList<Integer>();
     public static ArrayList<Integer> gameFieldY = new ArrayList<Integer>();
 
-    GameField() {
-        for (int i = 0; i < gameFieldX.size(); i++){
-
-        }
-    }
+    GameField() {}
 
 }
