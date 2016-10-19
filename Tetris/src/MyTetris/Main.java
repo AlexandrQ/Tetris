@@ -21,7 +21,7 @@ public class Main extends JPanel implements ActionListener{
     private GameField game = new GameField();
 
     private Random rand = new Random(System.currentTimeMillis());
-    private Timer t = new Timer(500, this);
+    private Timer t = new Timer(300, this);
 
     public Main() {
         t.start();

@@ -54,6 +54,7 @@ public class Point {
         if (orientation2 != orientation){
             switchOrientation();
             orientation2 = orientation;
+            canIMove();
         }
 
         switch (direct) {
@@ -80,6 +81,8 @@ public class Point {
     //разворачиваем фигуру
     public void switchOrientation() {
     }
+
+
 
     //проверяем можно ли двигаться дальше
     public void canIMove() {

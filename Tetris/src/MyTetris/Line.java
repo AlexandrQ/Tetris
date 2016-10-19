@@ -3,9 +3,9 @@ package MyTetris;
 public class Line extends Point{
 
     Line(){
-        length = 4;
+        length = 3;
         for (int i = 0; i < length; i++){
-            pointX[i] = length;
+            pointX[i] = 4;
             pointY[i] = i;
         }
     }
@@ -16,24 +16,27 @@ public class Line extends Point{
             case UPRIGHT:
                 if(canMoveDown){
                     for (int i = 0; i < length; i++){
-                        pointX[i] = pointX[0];
-                        pointY[i] = pointY[0] + i;
+                        pointX[i] = pointX[1];
+                        pointY[i] = pointY[i] +i - 1;
                     }
                 }
 
                 break;
             case HORIZONTALY:
-                if(pointX[0] < 7)
-                    for (int i = 0; i < length; i++){
-                        pointX[i] = pointX[0]+i;
-                        pointY[i] = pointY[0];
+                if(canMoveRight & canMoveLeft) {
+                    for (int i = 0; i < length; i++) {
+                        pointX[i] = pointX[i] + i - 1;
+                        pointY[i] = pointY[1];
                     }
-                else{
-                    for (int i = 0; i < length; i++){
-                        pointX[i] = pointX[0]-i;
-                        pointY[i] = pointY[0];
-                    }
+
                 }
+                else orientation = Orientation.UPRIGHT;
+//                else if (canMoveLeft){
+//                    for (int i = 0; i < length; i++){
+//                        pointX[i] = pointX[0]-i;
+//                        pointY[i] = pointY[0];
+//                    }
+//                }
 
                 break;
         }
