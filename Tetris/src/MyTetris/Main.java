@@ -101,8 +101,8 @@ public class Main extends JPanel implements ActionListener{
 
     //добавление нововй фигуры в массив фигур
     private Point createFigure(){
-        Point obj = new LFigure();
-//        int choice = rand.nextInt(5)+1;
+        Point obj = new JFigure();
+//        int choice = rand.nextInt(7)+1;
 //        switch (choice){
 //            case 1:
 //                obj = new SFigure();
@@ -115,6 +115,12 @@ public class Main extends JPanel implements ActionListener{
 //                break;
 //            case 4:
 //                obj = new TFigure();
+//                break;
+//            case 5:
+//                obj = new LFigure();
+//                break;
+//            case 6:
+//                obj = new JFigure();
 //                break;
 //            default:
 //                obj = new Square();
