@@ -30,6 +30,7 @@ public class Main extends JPanel implements ActionListener{
                 "Управление:\n\tСтрелка влево - передвинуть фигуру на одну позицию влево\n\t" +
                 "Стрелка вправо - передвинуть фигуру на одну позицию вправо\n\t" +
                 "Пробел - изменить ориентацию фигуры\n\n" +
+                "За каждую заполненную строку Вам начисляется 10 очков\n\n" +
                 "Удачи!"
         );
         t.start();
@@ -40,9 +41,9 @@ public class Main extends JPanel implements ActionListener{
     public void paint(Graphics g){
 
         //рисуем фон
-        g.setColor(Color.cyan);
+        g.setColor(Color.DARK_GRAY);
         g.fillRect(0, 0, WIDTH*SCALE, HEIGHT*SCALE);
-        g.setColor(Color.LIGHT_GRAY);
+        g.setColor(Color.lightGray);
 
         //рисуем вертикальные линии
         for (int x = 0; x <= WIDTH*SCALE; x+=SCALE){
