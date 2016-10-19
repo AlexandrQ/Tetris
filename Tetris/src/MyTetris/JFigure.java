@@ -1,8 +1,12 @@
 package MyTetris;
-
+/*
+ * класс описывает инициализацию
+ * и поведение J-образной фигуры
+ *
+ */
 
 public class JFigure extends Point {
-
+    //конструктор
     JFigure(){
         length = 4;
         for (int d = 0; d < length; d++) {
@@ -15,7 +19,8 @@ public class JFigure extends Point {
             }
         }
     }
-
+    //изменение координат фигуры
+    //в соответствии с заданной ориентацией
     @Override
     public void switchOrientation() {
         switch (orientation) {

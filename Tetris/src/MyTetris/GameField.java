@@ -2,18 +2,29 @@ package MyTetris;
 
 import java.util.ArrayList;
 
+/*
+ *Данный класс используется для создания объекта,
+ * в который будут записаны координаты фигур,
+ * которые не могут больше двигаться вниз.
+ * Так же в данном классе реализован метод, который
+ * удаляет заполненные строчки игрового поля
+ *
+ */
 
 public class GameField {
 
+    public static ArrayList<Integer> gameFieldX = new ArrayList<Integer>(); //массив Х-координат "недвижымих" объектов
+    public static ArrayList<Integer> gameFieldY = new ArrayList<Integer>(); //массив Y-координат "недвижымих" объектов
 
-    public static ArrayList<Integer> gameFieldX = new ArrayList<Integer>();
-    public static ArrayList<Integer> gameFieldY = new ArrayList<Integer>();
+    private static int count = 0;                                           //счетчик элементов в одной "линии"
+    private static int score = 0;                                           //игровой счет
 
-    private static int count = 0;
-    private ArrayList<Integer> buff = new ArrayList<Integer>();
-
+    //конструктор
     GameField() {}
 
+    public static int getScore(){return score;}
+
+    public static void setScore(int z) { score = z; }
 
     //проверяем GameField на наличие "полных" строк
     public static void findFullLine(){
@@ -42,8 +53,15 @@ public class GameField {
                     }
                 }
                 count = 0;
+                score += 10;
             }
             else count = 0;
         }
+    }
+
+    //очистка игрового поля
+    public static void clearGameField() {
+        gameFieldX.clear();
+        gameFieldY.clear();
     }
 }

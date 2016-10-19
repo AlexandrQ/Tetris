@@ -1,7 +1,11 @@
 package MyTetris;
-
+/*
+ * класс описывает инициализацию фигуры - квадрат
+ *
+ */
 
 public class Square extends Point {
+    //конструктор
     Square() {
         length = 4;
         pointX[0] = 4;  pointY[0] = 0;

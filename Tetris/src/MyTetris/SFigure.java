@@ -1,7 +1,10 @@
 package MyTetris;
-
+/*
+ * класс описывает инициализацию
+ * и поведение S-образной фигуры
+ *
+ */
 public class SFigure extends Point {
-
     //конструтор
     public SFigure (){
         length = 4;
@@ -16,8 +19,8 @@ public class SFigure extends Point {
             }
         }
     }
-
-    //разворот z-образной фигуры
+    //изменение координат фигуры
+    //в соответствии с заданной ориентацией
     @Override
     public  void switchOrientation() {
         switch (orientation){

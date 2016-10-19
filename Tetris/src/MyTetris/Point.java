@@ -1,4 +1,11 @@
 package MyTetris;
+/*
+* Это родительский класс для классов, которые описывают фигуры в игре
+* В данном классе описан метод, который реализует движение фигур,
+* а так же методы для определения столкновения фигуры с границами игрового поля
+* и с "недвижимыми" объектами (класс GameField
+*
+ */
 
 public class Point {
 
@@ -12,7 +19,6 @@ public class Point {
             crashRightField,
             crashLeftField;
     protected int length;
-
 
     //массивы для записи координат фигуры
     protected int pointX[] = new int[5];
@@ -50,13 +56,18 @@ public class Point {
     //двигаем фигуру
     public void move() {
         canMoveDown = canMoveLeft = canMoveRight = true;
+        //проверяем можно ли двигаться дальше
         canIMove();
+        //если игрок сменил ориентацию фигуры,
+        //то поварачиваем объект
         if (orientation2 != orientation){
             switchOrientation();
             orientation2 = orientation;
+            //проверяем может ли фигура двигаться дальше из нового положения
             canIMove();
         }
 
+        //меняем координаты фигуры согласно направлению
         switch (direct) {
             case RIGHT:
                 for (int d = length; d >= 0; d--) {
@@ -72,7 +83,7 @@ public class Point {
                 break;
             default:
                 for (int d = length; d >= 0; d--) {
-                    if (canMoveDown == true) pointY[d]++;
+                    if (canMoveDown) pointY[d]++;
                 }
                 break;
         }
@@ -82,30 +93,26 @@ public class Point {
     public void switchOrientation() {
     }
 
-
-
     //проверяем можно ли двигаться дальше
     public void canIMove() {
         crashDownField = crashRightField = crashLeftField = true;
+        //проверяем, врезается ли наша фигура в "недвижимые" объекты (в класс GameField)
         figureCrashGameField();
+        //так же проверяем на столкновения с границей игрового поля
         for (int d = 0; d < length; d++) {
             if (pointY[d] + 1 > 19 || !crashDownField ) {
                 canMoveDown = false;                        //когда фигура не может больше снижаться
-
                 for (int i = 0; i < length; i++ ){
                     GameField.gameFieldX.add(pointX[i]);    //она передает свои координаты в GameField
                     GameField.gameFieldY.add(pointY[i]);
                 }
-
                 Main.canCreate = true;                      //программа может создать новую фигуру
                 break;
             }
-
             //если при движении влево нет "стены" и GameField
             if (pointX[d] - 1 < 0 || !crashLeftField){
                 canMoveLeft = false;
             }
-
             //если при движении вправо нет "стены" и GameField
             if (pointX[d] + 1 > 9 || !crashRightField){
                 canMoveRight = false;

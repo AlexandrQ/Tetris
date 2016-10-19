@@ -1,8 +1,12 @@
 package MyTetris;
-
+/*
+ * класс описывает инициализацию
+ * и поведение Т-образной фигуры
+ *
+ */
 
 public class TFigure extends Point  {
-
+    //конструктор
     TFigure(){
         length = 4;
         for (int d = 0; d < length; d++ ){
@@ -16,7 +20,8 @@ public class TFigure extends Point  {
             }
         }
     }
-
+    //изменение координат фигуры
+    //в соответствии с заданной ориентацией
     @Override
     public  void switchOrientation() {
         switch (orientation){

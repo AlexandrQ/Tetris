@@ -1,8 +1,11 @@
 package MyTetris;
-
+/*
+ * класс описывает инициализацию
+ * и поведение Z-образной фигуры
+ *
+ */
 
 public class ZFigure extends Point {
-
     //конструтор
     public ZFigure (){
         length = 4;
@@ -17,8 +20,8 @@ public class ZFigure extends Point {
             }
         }
     }
-
-    //разворот z-образной фигуры
+    //изменение координат фигуры
+    //в соответствии с заданной ориентацией
     @Override
     public  void switchOrientation() {
         switch (orientation){

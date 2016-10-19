@@ -52,7 +52,7 @@ public class Main extends JPanel implements ActionListener{
             g.fillRect(p.getPointX(d) * SCALE + 1, p.getPointY(d) * SCALE + 1, SCALE - 1, SCALE - 1);
         }
 
-
+        //рисуем поле с "недвижимыми" объектами
         for (int j = 0; j < game.gameFieldX.size(); j++){
             g.setColor(Color.GREEN);
             g.fillRect(game.gameFieldX.get(j) * SCALE + 1, game.gameFieldY.get(j) * SCALE + 1, SCALE - 1, SCALE - 1);
@@ -99,39 +99,49 @@ public class Main extends JPanel implements ActionListener{
         }
     }
 
-    //добавление нововй фигуры в массив фигур
+    //создание новой фигуры
     private Point createFigure(){
-        Point obj = new JFigure();
-//        int choice = rand.nextInt(7)+1;
-//        switch (choice){
-//            case 1:
-//                obj = new SFigure();
-//                break;
-//            case 2:
-//                obj = new ZFigure();
-//                break;
-//            case 3:
-//                obj = new Line();
-//                break;
-//            case 4:
-//                obj = new TFigure();
-//                break;
-//            case 5:
-//                obj = new LFigure();
-//                break;
-//            case 6:
-//                obj = new JFigure();
-//                break;
-//            default:
-//                obj = new Square();
-//                break;
-//        }
+        Point obj;
+        int choice = rand.nextInt(7)+1; //из семи фигур выбираем одну
+        switch (choice){
+            case 1:
+                obj = new SFigure();
+                break;
+            case 2:
+                obj = new ZFigure();
+                break;
+            case 3:
+                obj = new Line();
+                break;
+            case 4:
+                obj = new TFigure();
+                break;
+            case 5:
+                obj = new LFigure();
+                break;
+            case 6:
+                obj = new JFigure();
+                break;
+            default:
+                obj = new Square();
+                break;
+        }
 
         //проверяем может ли созданный объект двигаться вниз
         obj.canIMove();
         //если не может, то конец игры
         if (obj.getCanMoveDown() == false){
-            System.exit(0);
+            //выводится диалоговое окно с итоговым счетом
+            //и запросом на новую игру
+            int answer = JOptionPane.showConfirmDialog(null,
+                    "Игра окончена! \n" + "Ваш счет: " + GameField.getScore() + "\nНачать новую игру? " ,
+                    "Игра окончена",
+                    JOptionPane.YES_NO_OPTION);
+            if (answer == JOptionPane.OK_OPTION){
+                GameField.clearGameField();
+                GameField.setScore(0);
+            }
+            else { System.exit(0);}
         }
         return obj;
     }

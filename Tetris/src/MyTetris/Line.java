@@ -1,7 +1,14 @@
 package MyTetris;
 
+/*
+ * класс описывает инициализацию
+ * и поведение фигуры - линия
+ *
+ */
+
 public class Line extends Point{
 
+    //конструктор
     Line(){
         length = 3;
         for (int i = 0; i < length; i++){
@@ -9,9 +16,10 @@ public class Line extends Point{
             pointY[i] = i;
         }
     }
-
+    //изменение координат фигуры
+    //в соответствии с заданной ориентацией
     @Override
-    public  void switchOrientation(){       //подумать над реализацией
+    public  void switchOrientation(){
         switch (orientation){
             case UPRIGHT: case SPECULARUPRIGHT:
                 if(canMoveDown){

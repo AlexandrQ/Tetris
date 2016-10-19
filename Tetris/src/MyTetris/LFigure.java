@@ -1,7 +1,11 @@
 package MyTetris;
-
-
+/*
+ * класс описывает инициализацию
+ * и поведение L-образной фигуры
+ *
+ */
 public class LFigure extends Point {
+    //конструктор
     LFigure() {
         length = 4;
         for (int d = 0; d < length; d++) {
@@ -14,7 +18,8 @@ public class LFigure extends Point {
             }
         }
     }
-
+    //изменение координат фигуры
+    //в соответствии с заданной ориентацией
     @Override
     public void switchOrientation() {
         switch (orientation) {
