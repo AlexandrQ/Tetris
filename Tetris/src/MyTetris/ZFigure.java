@@ -22,23 +22,19 @@ public class ZFigure extends Point {
     @Override
     public  void switchOrientation() {
         switch (orientation){
-            case UPRIGHT:
+            case UPRIGHT: case SPECULARUPRIGHT:
                 for (int d = 0; d < length; d++) {
                     if (d == 0){
                         pointX[d] = pointX[d]+1;
                         pointY[d] = pointY[0]-1;
                     }
-//                    else if (d == 1) {
-//                        pointX[d] = pointX[d];
-//                        pointY[d] = pointY[d];
-//                    }
                     else if (d >= 2 & d < length) {
                         pointX[d] = pointX[0] - 1;
                         pointY[d] = pointY[0] + d - 1;
                     }
                 }
                 break;
-            case HORIZONTALY:
+            case HORIZONTALY: case SPECULARHORIZONTALY:
                 if (canMoveRight) {
                     for (int d = 0; d < length; d++) {
                         if(d == 0){

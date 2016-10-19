@@ -84,13 +84,16 @@ public class Main extends JPanel implements ActionListener{
     private class Kyboard extends KeyAdapter {
         public void keyPressed(KeyEvent event){
             int key = event.getKeyCode();
-
             if (key == KeyEvent.VK_RIGHT) p.setDirection(Direction.RIGHT);
             if (key == KeyEvent.VK_LEFT) p.setDirection(Direction.LEFT);
             if (key == KeyEvent.VK_SPACE) {
                 if (p.getOrientation() == Orientation.UPRIGHT)
                     p.setOrientation(Orientation.HORIZONTALY);
-                else
+                else if (p.getOrientation() == Orientation.HORIZONTALY)
+                    p.setOrientation(Orientation.SPECULARUPRIGHT);
+                else if (p.getOrientation() == Orientation.SPECULARUPRIGHT)
+                    p.setOrientation(Orientation.SPECULARHORIZONTALY);
+                else if (p.getOrientation() == Orientation.SPECULARHORIZONTALY)
                     p.setOrientation(Orientation.UPRIGHT);
             }
         }
@@ -98,8 +101,8 @@ public class Main extends JPanel implements ActionListener{
 
     //добавление нововй фигуры в массив фигур
     private Point createFigure(){
-        Point obj = new ZFigure();
-//        int choice = rand.nextInt(4)+1;
+        Point obj = new TFigure();
+//        int choice = rand.nextInt(5)+1;
 //        switch (choice){
 //            case 1:
 //                obj = new SFigure();
@@ -109,6 +112,9 @@ public class Main extends JPanel implements ActionListener{
 //                break;
 //            case 3:
 //                obj = new Line();
+//                break;
+//            case 4:
+//                obj = new TFigure();
 //                break;
 //            default:
 //                obj = new Square();

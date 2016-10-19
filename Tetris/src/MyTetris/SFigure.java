@@ -21,7 +21,7 @@ public class SFigure extends Point {
     @Override
     public  void switchOrientation() {
         switch (orientation){
-            case UPRIGHT:
+            case UPRIGHT: case SPECULARUPRIGHT:
                 for (int d = 0; d < length; d++) {
                         if (d == 0){
                             pointX[d] = pointX[d]+1;
@@ -36,7 +36,7 @@ public class SFigure extends Point {
                         }
                 }
                 break;
-            case HORIZONTALY:
+            case HORIZONTALY: case SPECULARHORIZONTALY:
                 if (canMoveLeft) {
                     for (int d = 0; d < length; d++) {
                         if(d == 0){
