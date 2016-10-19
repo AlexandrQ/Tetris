@@ -98,17 +98,20 @@ public class Main extends JPanel implements ActionListener{
 
     //добавление нововй фигуры в массив фигур
     private Point createFigure(){
-        Point obj = new Line();
-//        int choice = rand.nextInt(3)+1;
+        Point obj = new ZFigure();
+//        int choice = rand.nextInt(4)+1;
 //        switch (choice){
 //            case 1:
 //                obj = new SFigure();
 //                break;
 //            case 2:
-//                obj = new Square();
+//                obj = new ZFigure();
+//                break;
+//            case 3:
+//                obj = new Line();
 //                break;
 //            default:
-//                obj = new ZFigure();
+//                obj = new Square();
 //                break;
 //        }
 
