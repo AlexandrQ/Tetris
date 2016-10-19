@@ -101,7 +101,7 @@ public class Main extends JPanel implements ActionListener{
 
     //добавление нововй фигуры в массив фигур
     private Point createFigure(){
-        Point obj = new TFigure();
+        Point obj = new LFigure();
 //        int choice = rand.nextInt(5)+1;
 //        switch (choice){
 //            case 1:
