@@ -18,12 +18,20 @@ public class Main extends JPanel implements ActionListener{
     public static boolean canCreate = true;   //разрешает создание нового объекта
 
     private Point p = new Point();      //вспомогательный объект
+
     private GameField game = new GameField();
 
     private Random rand = new Random(System.currentTimeMillis());
-    private Timer t = new Timer(300, this);
+    private Timer t = new Timer(250, this); //задержка таймера влияет на "скорость" падения фигур
 
     public Main() {
+        //вводное диалоговое окно
+        JOptionPane.showMessageDialog(null, "Добро пожаловать в игру: 'Тетрис'!\n\n" +
+                "Управление:\n\tСтрелка влево - передвинуть фигуру на одну позицию влево\n\t" +
+                "Стрелка вправо - передвинуть фигуру на одну позицию вправо\n\t" +
+                "Пробел - изменить ориентацию фигуры\n\n" +
+                "Удачи!"
+        );
         t.start();
         addKeyListener(new Kyboard());
         setFocusable(true);
@@ -67,6 +75,8 @@ public class Main extends JPanel implements ActionListener{
         f.setLocationRelativeTo(null);
         f.add(new Main());
         f.setVisible(true);
+
+
     }
 
     @Override
